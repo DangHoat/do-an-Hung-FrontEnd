@@ -1,4 +1,5 @@
 {
+  "homepage": "https://DangHoat.github.io/do-an-Hung-FrontEnd/",
   "name": "frontEndDoAn",
   "version": "1.0.0",
   "main": "index.js",
@@ -7,7 +8,7 @@
     "web-app": " parcel src/index.html",
     "build-parcel": "parcel build src/index.html",
     "predeploy": "npm run build-parcel",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
