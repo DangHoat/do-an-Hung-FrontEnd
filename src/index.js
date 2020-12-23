@@ -1,6 +1,6 @@
 import React from 'react'
 import {render} from 'react-dom'
-import App from './src/App'
+import App from './views/App'
 import "./style.css"
 import { CookiesProvider } from 'react-cookie'
 import configureStore  from "./redux/store"

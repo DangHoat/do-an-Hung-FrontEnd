@@ -90,6 +90,12 @@
     }
 }
 
+
+.navbar .dropdown-menu .list-group {
+    max-height: 30rem;
+    overflow-y: auto;
+    display: -webkit-box;
+}
 .sign-back { 
     background:url('/background.e116005a.png'); 
     -webkit-background-size: cover;
