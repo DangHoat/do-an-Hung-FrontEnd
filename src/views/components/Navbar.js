@@ -100,9 +100,10 @@ class NavbarComponent extends React.Component {
 
     render() {
         const { dispatch, user } = this.props;
-        const userInfo = user.user;
-        const avatar = userInfo.photo;
-        const name = userInfo.full_name;
+        const userInfo =" user.user";
+        // const avatar = userInfo.photo;
+        const avatar = null;
+        const name = "userInfo.full_name";
         return (
             <Navbar color="white" light expand>
                 {

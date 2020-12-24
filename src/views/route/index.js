@@ -1,5 +1,7 @@
 import SignIn from "../pages/auth/SignIn"
 import SignUp from "../pages/auth/SignUp";
+import Profile from '../pages/Profile'
+import Timeline from '../pages/Timeline'
 import {
     Layout as LayoutIcon,
     Sliders as SlidersIcon,
@@ -33,13 +35,13 @@ import {
     children: [
         {
             path: "/do-an/timeline",
-            name: "Timeline Page",
-            component: null
+            name: "Bản đồ di chuyển",
+            component: Timeline
         },
         {
-            path: "/do-an/work",
-            name: "List work Page",
-            component: null
+            path: "/do-an/profile",
+            name: "Thông tin người dùng",
+            component: Profile
         }
     ]
 };

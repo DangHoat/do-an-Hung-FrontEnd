@@ -51,15 +51,12 @@ class Sidebar extends React.Component {
 
     componentDidMount() {
         /* Open collapse element that matches current url */
-        const pathName = this.props.location.pathname;
-
+        
         routes.forEach((route, index) => {
-            const isActive = pathName.indexOf(route.path) === 0;
-            const isOpen = route.open;
-            const isHome = route.containsHome && pathName === "/" ? true : false;
+        
 
             this.setState(() => ({
-                [index]: isActive || isOpen || isHome
+                [index]: true
             }));
         });
 
@@ -68,23 +65,17 @@ class Sidebar extends React.Component {
     }
 
     render() {
-        const { sidebar, layout, user } = this.props;
-        const userInfo = user.user;
-        const name = userInfo.full_name;
-        const avatar = userInfo.photo;
-
-
-        if (name === undefined || avatar === undefined) {
-            return (
-                <div> </div>
-            );
-        } else
+      
+        const userInfo = "user.user";
+        const name = "userInfo.full_name";
+        // const avatar = userInfo.photo;
+        const avatar = null;
             return (
                 <nav
                     className={
-                        "sidebar" +
-                        (!sidebar.isOpen ? " toggled" : "") +
-                        (sidebar.isSticky ? " sidebar-sticky" : "")
+                        " toggled sidebar-sticky" 
+                        // +(!sidebar.isOpen ? " toggled" : "") +
+                        // (sidebar.isSticky ? " sidebar-sticky" : "")
                     }
                 >
                     <div className="sidebar-content">
@@ -93,7 +84,6 @@ class Sidebar extends React.Component {
                                 <Box className="align-middle text-primary mr-2" size={24} />{" "}
                                 <span className="align-middle" >Fwork</span>
                             </a>
-
                             <ul className="sidebar-nav">
                                 <React.Fragment>
                                     <SidebarItem
@@ -147,7 +137,7 @@ class Sidebar extends React.Component {
                                 </React.Fragment>
                             </ul>
 
-                            {!layout.isBoxed && !sidebar.isSticky ? (
+                            {true ? (
                                 <div className="sidebar-bottom d-none d-lg-block">
                                     <div className="media">
                                         <CustomImg

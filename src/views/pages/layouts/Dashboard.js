@@ -53,17 +53,9 @@ class Dashboard extends React.Component {
                     text='Please wait...'
                 >
                     <Wrapper>
-                        {
-                            this.props.isSidebar
-                                ?
-                                <Sidebar />
-                                :
-                                null
-
-                        }
-
+                        <Sidebar />
                         <Main>
-                            <Navbar notification={this.state.notification} isSidebar={this.props.isSidebar}/>
+                            <Navbar notification={this.state.notification} isSidebar={true}/>
                             <Content>
                                 {children}
                             </Content>

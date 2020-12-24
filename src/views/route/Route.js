@@ -11,7 +11,7 @@ import Page404 from '../pages/error/Page404'
 import ScrollToTop from "../components/ScrollToTop";
 
 
-const MapRoute = (Layout, routes) =>
+const MapLayout1 = (Layout, routes) =>
     routes.map(({ children, path, component: Component }, index) =>
         
         children ? (
@@ -43,7 +43,36 @@ const MapRoute = (Layout, routes) =>
                 />
             )
      );
-
+const MapLayout2 = (Layout, routes, isSidebar) =>
+    routes.map(({ children, path, component: Component }, index) =>
+        children ? (
+            // Route item with children
+            children.map(({ path, component: Component }, index) => (
+                <Route
+                    key={index}
+                    path={path}
+                    exact
+                    render={props => (
+                        <Layout isSidebar={isSidebar}>
+                            <Component {...props} />
+                        </Layout>
+                    )}
+                />
+            ))
+        ) : (
+                // Route item without children
+                <Route
+                    key={index}
+                    path={path}
+                    exact
+                    render={props => (
+                        <Layout isSidebar={isSidebar}>
+                            <Component {...props} />
+                        </Layout>
+                    )}
+                />
+            )
+    );
     
 export default function Routes(){
     console.log(authRoutes)
@@ -53,9 +82,9 @@ export default function Routes(){
                 <Switch>
                     <Route exact path="/" render={() => (<Redirect to="/auth/sign-in" />)} />
 
-                    {MapRoute(AuthLayout,authRoutes)}
+                    {MapLayout1(AuthLayout,authRoutes)}
                     {
-                        sessionStorage.getItem('Session') == null ? MapRoute() : <Redirect to="/auth/sign-in"/>
+                    MapLayout2(Dashboard,dashboardRoutes,true) 
                     }
                     <Route
                         render= {

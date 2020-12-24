@@ -1,6 +1,5 @@
 const initialState = {
-    y: 250,
-    r: 0,
+  
   }
 export default (state = initialState, {type} = {}) => {
     switch (type) {

@@ -1,6 +1,4 @@
 import {toastr} from "react-redux-toastr";
-import utils from "../utils/utils";
-
 function Notification(type, title, message) {
     const options = {
         timeOut: 5000,
@@ -21,8 +19,8 @@ function Notification(type, title, message) {
     message = (typeof message==="object") ? JSON.stringify(message) : message;
 
     toastrInstance(
-        utils.returnThisWhenNull(title, "Success"),
-        utils.returnThisWhenNull(message, "Successfully!!!"),
+        title||"Success",
+        message||"Successfully!!",
         options
     );
 }

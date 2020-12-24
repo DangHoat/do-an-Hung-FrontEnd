@@ -16,7 +16,7 @@ class Page404 extends React.Component {
         <p className="page404-p">
         The page you were looking for doesn't exist.
         </p>
-        <Link to="/dashboard">
+        <Link to="/">
           <Button color="primary" className="page404-button px-3">
             Return to website
           </Button>
