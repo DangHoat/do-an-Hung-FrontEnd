@@ -27,20 +27,6 @@ class Dashboard extends React.Component {
             isLoading: action
         })
     }
-
-    // componentDidMount() {
-    //     const that = this;
-    //     api.getNotification((err, result)=>{
-    //         if(err){
-    //             Notification("error", "Notification", "Error when loading notification");
-    //         } else {
-    //             that.setState({
-    //                 notification: result
-    //             })
-    //         }
-    //     })
-    // }
-
     render() {
         let children_props = Object.assign({handleLoading: this.handleLoading}, this.props.children.props);
         let children = _objectWithoutProperties(this.props.children, "props");
