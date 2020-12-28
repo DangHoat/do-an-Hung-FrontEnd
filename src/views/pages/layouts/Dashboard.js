@@ -8,6 +8,7 @@ import Content from "../../components/Content";
 import Footer from "../../components/Footer";
 import LoadingOverlay from "react-loading-overlay";
 import Notification from "../../components/Notification"
+import {ModalAddTrack} from "../../components/Modal"
 
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -33,6 +34,9 @@ class Dashboard extends React.Component {
         children = Object.assign(children, {"props": children_props});
         return (
             <React.Fragment>
+                <ModalAddTrack 
+                isOpen ={true}
+                />
                 <LoadingOverlay
                     active={this.state.isLoading}
                     spinner

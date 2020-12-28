@@ -106,11 +106,7 @@ class NavbarComponent extends React.Component {
                 <Link to="/do-an/timeline">
                   <Map id="navbar-dashboard" size={18} />
                 </Link>
-                <UncontrolledTooltip
-                  placement="bottom"
-                  target="navbar-dashboard"
-                > Timeline
-                </UncontrolledTooltip>
+              
               </DropdownToggle>
               
             </UncontrolledDropdown>
@@ -119,12 +115,7 @@ class NavbarComponent extends React.Component {
                 <Link to="/do-an/timeline">
                   <Plus id="navbar-dashboard" size={18} />
                 </Link>
-                <UncontrolledTooltip
-                  placement="bottom"
-                  target="navbar-dashboard"
-                >
-                  Thêm
-                </UncontrolledTooltip>
+               
               </DropdownToggle>
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar className="mr-2">
