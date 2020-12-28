@@ -19,7 +19,7 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 
-import { Bell, Home, PieChart, Settings, User, Map } from "react-feather";
+import { Bell, Home, PieChart, Settings, User, Map,Plus } from "react-feather";
 import { CustomImg } from "../components/CustomTag";
 
 import usFlag from "../../assets/image/avatars/us.png";
@@ -73,37 +73,6 @@ class NavbarDropdown extends React.Component {
     );
   }
 }
-
-class NavbarDropdownItem extends React.Component {
-  render() {
-    const {
-      photo,
-      user,
-      event_type,
-      subject,
-      project,
-      time,
-      spacing,
-    } = this.props;
-    return (
-      <ListGroupItem>
-        <Row noGutters className="align-items-center">
-          <Col xs={2}>
-            <CustomImg src={photo} alt="avatar" className="rounded-circle" />
-          </Col>
-          <Col xs={10} className={spacing ? "pl-2" : null}>
-            <div className="font-weight-bold font-size-1x">{project}</div>
-            <span className="font-weight-bold">{user}</span>&nbsp;
-            <span className="font-italic">{event_type}</span>&nbsp;
-            <span className="font-weight-bold text-success">#{subject}</span>
-            <div className="text-muted font-size-1x">{time.split("T")[0]}</div>
-          </Col>
-        </Row>
-      </ListGroupItem>
-    );
-  }
-}
-
 class NavbarComponent extends React.Component {
   changeLanguage(lang) {
     this.setState({
@@ -134,26 +103,27 @@ class NavbarComponent extends React.Component {
           <Nav className="ml-auto" navbar>
             <UncontrolledDropdown nav inNavbar className="mr-2">
               <DropdownToggle nav>
-                <Link to="/dashboard">
+                <Link to="/do-an/timeline">
                   <Map id="navbar-dashboard" size={18} />
                 </Link>
                 <UncontrolledTooltip
                   placement="bottom"
                   target="navbar-dashboard"
-                > 
+                > Timeline
                 </UncontrolledTooltip>
               </DropdownToggle>
+              
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar className="mr-2">
               <DropdownToggle nav>
                 <Link to="/do-an/timeline">
-                  <Home id="navbar-dashboard" size={18} />
+                  <Plus id="navbar-dashboard" size={18} />
                 </Link>
                 <UncontrolledTooltip
                   placement="bottom"
                   target="navbar-dashboard"
                 >
-                  TimeLine
+                  Thêm
                 </UncontrolledTooltip>
               </DropdownToggle>
             </UncontrolledDropdown>

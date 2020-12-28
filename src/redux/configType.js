@@ -18,4 +18,7 @@ export const THEME_TOGGLE = "THEME_TOGGLE";
 // User
 export const LOGIN_USER = "LOGIN_USER";
 export const ME_FROM_TOKEN = 'ME_FROM_TOKEN';
+//ACTION 
 
+export const SWITCH_TRACKER  ="SWITCH_TRACKER "
+export const ADD_TRACKER ="ADD_TRACKER"
