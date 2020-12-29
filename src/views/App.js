@@ -8,7 +8,7 @@ const App = ({store}) => {
     return (
         <Provider store={store}>
             <Routes />
-            {/* <ReduxToastr
+            <ReduxToastr
                 timeOut={5000}
                 newestOnTop={true}
                 position="top-right"
@@ -16,7 +16,7 @@ const App = ({store}) => {
                 transitionOut="fadeOut"
                 progressBar
                 closeOnToastrClick
-            /> */}
+            />
         </Provider>
     )
 }
