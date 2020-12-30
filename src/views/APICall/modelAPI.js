@@ -1,7 +1,9 @@
  import * as urlApis from './config'
  const axios = require('axios')
  const headers =  {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
 }
 /**
  * 
@@ -11,7 +13,7 @@
  */
 let getAPI = (url,token,callback)=>{
     const AuthStr = 'Bearer '.concat(token); 
-    axios.get(URL, { headers: { Authorization: AuthStr } })
+    axios.get(url, { "headers": { "Authorization ": AuthStr } })
  .then(response => {
     
      return callback(false, response.data)
@@ -36,7 +38,6 @@ let postAPI =(url,data,callback)=>{
     axios({
         url: url,
         method: 'POST',
-        withCredentials: true,
         headers:headers,
         data :data
     }).then(response=>{
@@ -61,7 +62,6 @@ let putAPI =(url,data,callback)=>{
     axios({
         url: url,
         method: 'PUT',
-        withCredentials: true,
         headers:headers,
         data :data
     }).then(response=>{
@@ -86,7 +86,6 @@ let patchAPI =(url,data,callback)=>{
     axios({
         url: url,
         method: 'PATCH',
-        withCredentials: true,
         headers:headers,
         data :data
     }).then(response=>{

@@ -5,6 +5,5 @@ import rootReducer from './reducers/index'
 
 export default () => {
   const store = createStore(rootReducer, applyMiddleware(thunk))
-
   return store
 }

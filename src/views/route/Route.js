@@ -84,7 +84,8 @@ export default function Routes(){
 
                     {MapLayout1(AuthLayout,authRoutes)}
                     {
-                    MapLayout2(Dashboard,dashboardRoutes,true) 
+                        true?
+                    MapLayout2(Dashboard,dashboardRoutes,true) : <Redirect to="/auth/sign-in" />
                     }
                     <Route
                         render= {

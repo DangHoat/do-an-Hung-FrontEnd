@@ -3,6 +3,7 @@ import { postAPI } from "../../../APICall/modelAPI";
 import { login } from "../../../APICall/config";
 import { Link, NavLink } from "react-router-dom";
 import socketIOClient from "socket.io-client";
+import {connect} from 'react-redux'
 import {
   Button,
   Card,
@@ -13,6 +14,7 @@ import {
   Input,
   Alert,
   Container,
+  Spinner
 } from "reactstrap";
 import "../style.css";
 const SignIn = () => {
@@ -30,20 +32,40 @@ const SignIn = () => {
     socket.emit("join", "iddd", "nnnnnnn");
   }, []);
 
-  let handleChange = () => {};
-  let handleSubmit = () => {
-    postAPI(login, {
-      "username": "admin",
-      "password": "Admin123"
-    },(err,res)=>{
-        console.log("=============================")
-        console.log(err)
-        console.log(res)
-        console.log("=============================")
-        
-    });
+  let handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmitted(true);
+    // stop here if form is invalid
+    if (!(email && password)) {
+      return;
+    }
+
+    setLoading(true);
+    setTimeout(() => {
+      postAPI(
+        login,
+        {
+          username: email,
+          password: password,
+        },
+        (err, result) => {
+            
+          if (err) {
+            setError("Lỗi Đăng Nhập ! Vui Lòng Kiểm Tra Lại.");
+            setLoading(false);
+          } else {
+            if (result.user._id !== undefined) {
+              // const { dispatch } = this.props;
+              // dispatch({ type: 'LOGIN_USER', user: result })
+              window.location.replace("/");
+            }
+          }
+        }
+      );
+    }, 500);
   };
-  console.log(login)
+  //   "username": "admin",
+  //   "password": "Admin123"
   return (
     <React.Fragment>
       <Container className="width-percent-80 SignIn-card">
@@ -72,7 +94,7 @@ const SignIn = () => {
                 >
                   Đồ Án Tốt Nghiệp
                 </h1>
-                <Form onSubmit={handleSubmit()}>
+                <Form onSubmit={handleSubmit}>
                   <FormGroup
                     className={
                       window.innerWidth >= 415 && window.innerWidth <= 1920
@@ -82,10 +104,10 @@ const SignIn = () => {
                   >
                     <Input
                       bsSize="mb-3"
-                      type="email"
+                      type="text"
                       name="email"
                       value={email}
-                      onChange={handleChange()}
+                      onChange={(event) => setEmail(event.target.value)}
                       placeholder={"Username"}
                       invalid={submitted && !email ? true : false}
                     />
@@ -105,7 +127,7 @@ const SignIn = () => {
                       type="password"
                       name="password"
                       value={password}
-                      onChange={handleChange()}
+                      onChange={(e) => setPassword(e.target.value)}
                       placeholder={"Password"}
                       invalid={submitted && !password ? true : false}
                     />
@@ -133,7 +155,7 @@ const SignIn = () => {
                         Đăng Nhập <time dateTime={error}>{error}</time>
                       </Button>
                     ) : (
-                      <LoadingSprinner />
+                        <Spinner color="info" type="grow" size= ""/>
                     )}
                   </div>
                 </Form>
@@ -156,4 +178,5 @@ const SignIn = () => {
     </React.Fragment>
   );
 };
-export default SignIn;
+
+export default (SignIn);

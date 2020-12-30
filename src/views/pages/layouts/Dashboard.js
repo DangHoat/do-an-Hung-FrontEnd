@@ -35,7 +35,7 @@ class Dashboard extends React.Component {
         return (
             <React.Fragment>
                 <ModalAddTrack 
-                isOpen ={true}
+                isOpen ={false}
                 />
                 <LoadingOverlay
                     active={this.state.isLoading}
