@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "parcel src/index.html",
+    "start": "parcel src/index.html --port 1234",
     "front-dev": "parcel src/index.html",
     "build-parcel": "parcel build src/index.html",
     "predeploy": "npm run build-parcel",
@@ -29,6 +29,7 @@
     "i18next": "^19.8.4",
     "icons": "^1.0.0",
     "jquery": "^3.5.1",
+    "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react": "^15.0.0 || ^16.0.0",
     "react-bootstrap": "^1.0.0-beta.9",

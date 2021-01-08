@@ -4,6 +4,7 @@ import React, {
 } from "react";
 import {NavLink} from 'react-router-dom'
 import {withTranslation} from 'react-i18next';
+import {connect} from 'react-redux'
 import LoadingSprinner from "../../../components/LoadingSprinner";
 import '../style.css'
 import {
@@ -30,9 +31,7 @@ const SignUp = () => {
     const [terms, setTerms] = useState(false)
     
 
-    let handleChange = (event) => {
-
-    }
+    
     let handleSubmit = () => {
 
 
@@ -93,7 +92,7 @@ const SignUp = () => {
                                         type="text"
                                         name="full_name"
                                         value={full_name}
-                                        onChange={handleChange()}
+                                        onChange={ev=>setFullname(ev.target.value)}
                                         placeholder={"Tên Đầy Đủ"}
                                         invalid={submitted && !full_name ? true : false}
                                     />
@@ -108,7 +107,7 @@ const SignUp = () => {
                                         type="password"
                                         name="password"
                                         value={password}
-                                        onChange={handleChange()}
+                                        onChange={ev=>setPassword(ev.target.value)}
                                         placeholder={"Password"}
                                         invalid={submitted && validatePassword(password) ? true : false}
                                     />
@@ -130,7 +129,7 @@ const SignUp = () => {
                                         type="password"
                                         name="confirm_password"
                                         value={confirm_password}
-                                        onChange={handleChange()}
+                                        onChange={ev=>setComfirm(ev.target.value)}
                                         placeholder={"Xác nhận mật khẩu"}
                                         invalid={submitted && password !== confirm_password ? true : false}
                                     />  
@@ -138,16 +137,6 @@ const SignUp = () => {
                                         Confirm password incorrect. Please retype the password
                                     </FormFeedback>
                                 </FormGroup>
-                                {/*<FormGroup>*/}
-                                {/*    <Label>*/}
-                                {/*        <CustomInput  type="checkbox"  name="terms" id="term"  onChange={e=>setTerms(e.target.value)}  />*/}
-                                {/*    </Label>*/}
-                                {/*    <small>*/}
-                                {/*        <NavLink to="/term" target="_blank" className="mt-1">*/}
-                                {/*            Bạn đồng ý với các điều khoản dịch vụ của chúng tôi!*/}
-                                {/*        </NavLink> */}
-                                {/*    </small> */}
-                                {/*</FormGroup>*/}
                                 <div className="text-center mt-3">
                                     {loading === false? 
                                         <Button 
@@ -171,4 +160,11 @@ const SignUp = () => {
             </React.Fragment>
     )
 }
-export default SignUp
+const mapStateToProps = (store) => ({
+    
+  })
+  
+  const mapDispatchToProps = {
+    
+  }
+export default connect(mapStateToProps,mapDispatchToProps)( SignUp)

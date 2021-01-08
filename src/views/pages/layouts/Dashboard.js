@@ -1,5 +1,5 @@
 import React from "react";
-
+import {connect} from 'react-redux'
 import Wrapper from "../../components/Wrapper";
 import Sidebar from "../../components/Sidebar";
 import Main from "../../components/Main";
@@ -35,7 +35,7 @@ class Dashboard extends React.Component {
         return (
             <React.Fragment>
                 <ModalAddTrack 
-                isOpen ={false}
+                isOpen ={this.props.orther.addNewTracker}
                 />
                 <LoadingOverlay
                     active={this.state.isLoading}
@@ -57,5 +57,8 @@ class Dashboard extends React.Component {
         )
     }
 }
+const mapStateToProps = (store) => ({
+    orther : store.orther
+  })
 
-export default Dashboard;
+export default connect(mapStateToProps)(Dashboard) ;

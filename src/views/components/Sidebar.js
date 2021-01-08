@@ -10,7 +10,7 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-import routes from "../route/index";
+import routes from "../route/configRoute";
 
 
 
@@ -40,7 +40,7 @@ const SidebarItem = withRouter(
   }
 );
 
-class Sidebar extends React.Component {
+export class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -100,5 +100,13 @@ class Sidebar extends React.Component {
     );
   }
 }
+const mapStateToProps = (store) => ({
+ 
+})
 
-export default Sidebar;
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Sidebar);
+

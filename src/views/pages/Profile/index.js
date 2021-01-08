@@ -24,3 +24,5 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(index)
+
+// export default index

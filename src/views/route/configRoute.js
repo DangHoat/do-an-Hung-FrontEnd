@@ -24,7 +24,13 @@ import {
             path: "/auth/sign-up",
             name: "Sign Up",
             component: SignUp
+        },
+        {
+            path: "/auth/reset-password",
+            name: "Sign Up",
+            component: SignUp
         }
+        
     ]
 };
 

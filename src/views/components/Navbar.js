@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleSidebar } from "../../redux/actions/sidebarActions";
+import {addTracker } from "../../redux/actions/ortherActions";
 import { Link } from "react-router-dom";
 import $ from "jquery";
 
@@ -43,36 +43,6 @@ const event = [
   "event_type_9",
   "event_type_10",
 ];
-
-class NavbarDropdown extends React.Component {
-  render() {
-    const { children, count, showBadge, header, icon } = this.props;
-    return (
-      <UncontrolledDropdown nav inNavbar className="mr-2">
-        <DropdownToggle nav className="nav-icon dropdown-toggle">
-          <div className="position-relative">
-            <Link to="#">
-              <Bell id="navbar-notificatipn" className="align-middle" />
-            </Link>
-            <UncontrolledTooltip
-              placement="bottom"
-              target="navbar-notificatipn"
-            >
-              Notifications
-            </UncontrolledTooltip>
-            {showBadge ? <span className="indicator">{count}</span> : null}
-          </div>
-        </DropdownToggle>
-        <DropdownMenu right className="dropdown-menu-lg py-0">
-          <div className="dropdown-menu-header position-relative">
-            {count} {header}
-          </div>
-          <ListGroup>{children}</ListGroup>
-        </DropdownMenu>
-      </UncontrolledDropdown>
-    );
-  }
-}
 class NavbarComponent extends React.Component {
   changeLanguage(lang) {
     this.setState({
@@ -92,6 +62,7 @@ class NavbarComponent extends React.Component {
   }
 
   render() {
+    console.log(this.props.orther)
     const { dispatch, user } = this.props;
     const userInfo = " user.user";
     // const avatar = userInfo.photo;
@@ -106,16 +77,12 @@ class NavbarComponent extends React.Component {
                 <Link to="/do-an/timeline">
                   <Map id="navbar-dashboard" size={18} />
                 </Link>
-              
               </DropdownToggle>
               
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar className="mr-2">
               <DropdownToggle nav>
-                <Link to="/do-an/timeline">
-                  <Plus id="navbar-dashboard" size={18} />
-                </Link>
-               
+                  <Plus id="navbar-dashboard" size={18} onClick={() => { dispatch(addTracker()); }}/>
               </DropdownToggle>
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar className="mr-2">
@@ -188,8 +155,14 @@ class NavbarComponent extends React.Component {
     );
   }
 }
+const mapStateToProps = (store) => ({
+  orther : store.orther
+})
 
-export default connect((store) => ({
-  app: store.app,
-  user: store.user,
-}))(NavbarComponent);
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps)(NavbarComponent);
+
+

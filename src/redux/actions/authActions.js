@@ -1,7 +1,6 @@
 import * as types from "../configType";
 const axios = require('axios');
-export function loginUser() {
-    
+export function loginUser(user) {
     return {
         type: types.LOGIN_USER
     };

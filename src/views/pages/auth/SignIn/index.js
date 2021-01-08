@@ -17,7 +17,7 @@ import {
   Spinner
 } from "reactstrap";
 import "../style.css";
-const SignIn = () => {
+const SignIn = ({dispatchLogin}) => {
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +32,7 @@ const SignIn = () => {
     socket.emit("join", "iddd", "nnnnnnn");
   }, []);
 
+  
   let handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true);
@@ -39,7 +40,6 @@ const SignIn = () => {
     if (!(email && password)) {
       return;
     }
-
     setLoading(true);
     setTimeout(() => {
       postAPI(
@@ -55,8 +55,10 @@ const SignIn = () => {
             setLoading(false);
           } else {
             if (result.user._id !== undefined) {
+
               // const { dispatch } = this.props;
               // dispatch({ type: 'LOGIN_USER', user: result })
+              
               window.location.replace("/");
             }
           }
@@ -66,6 +68,7 @@ const SignIn = () => {
   };
   //   "username": "admin",
   //   "password": "Admin123"
+  
   return (
     <React.Fragment>
       <Container className="width-percent-80 SignIn-card">
@@ -178,5 +181,16 @@ const SignIn = () => {
     </React.Fragment>
   );
 };
+const dispatchLogin =() =>{
+  return (dispatch,state)=>{
+    dispatch({type :'LOGIN_USER'},state)
+  }
+}
+const mapStateToProps = (store) => ({
+    
+})
 
-export default (SignIn);
+const mapDispatchToProps = {
+  dispatchLogin
+}
+export default connect(mapStateToProps,mapDispatchToProps)(SignIn);

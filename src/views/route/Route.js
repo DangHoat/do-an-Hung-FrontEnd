@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import {
     auth as authRoutes,
-    page as dashboardRoutes } from './index'
+    page as dashboardRoutes } from './configRoute'
 import DashboardLayout from "../pages/layouts/Dashboard"
 import AuthLayout from "../pages/layouts/Auth"
 import Dashboard  from "../pages/layouts/Dashboard";
