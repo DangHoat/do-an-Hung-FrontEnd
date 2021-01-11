@@ -6,6 +6,12 @@ export function addTracker() {
     addNewTracker : true
   };
 }
+export function hideAddTracker() {
+  return {
+    type: types.HIDE_ADD_TRACKER,
+    addNewTracker : false
+  };
+}
 export function switchTracker() {
   return {
     type: types.SWITCH_TRACKER,

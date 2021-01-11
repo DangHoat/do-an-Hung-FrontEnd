@@ -13,6 +13,7 @@ import {
   Form,
   FormGroup,
   Label,
+  FormFeedback
 } from "reactstrap";
 
 // import {CustomImg} from "../components/CustomTag"
@@ -55,15 +56,34 @@ class ModalConfirm extends React.Component {
 class ModalAddTrack extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      name :"",
+      phone :"",
+      password:"",
+      password2:"",
+      validPassword : false
+    }
   }
-
   handleOk() {
-    this.props.handleOk();
+    if(this.state.password != this.state.password2 ||!this.state.password){
+      this.setState({validPassword:true})
+      return
+    }else{
+      this.setState({validPassword:false})
+      this.props.handleOk(this.state);
+    }
+
+    
   }
 
   handleCancel() {
     this.props.handleCancel();
   }
+  handleChange(event) {
+    this.setState({
+        [event.target.name]: event.target.value
+    })
+}
 
   render() {
     return (
@@ -76,6 +96,7 @@ class ModalAddTrack extends React.Component {
                 <FormGroup>
                   <Label for="exampleEmail">Name</Label>
                   <Input
+                    onChange ={this.handleChange.bind(this)} 
                     type="name"
                     name="name"
                     id="name"
@@ -87,6 +108,7 @@ class ModalAddTrack extends React.Component {
                 <FormGroup>
                   <Label for="examplePassword">Số Điện Thoại</Label>
                   <Input
+                    onChange ={this.handleChange.bind(this)} 
                     type="number"
                     name="phone"
                     id="phone"
@@ -98,6 +120,7 @@ class ModalAddTrack extends React.Component {
             <FormGroup>
               <Label for="exampleAddress">Mật Khẩu</Label>
               <Input
+                onChange ={this.handleChange.bind(this)} 
                 type="password"
                 name="password"
                 id="password"
@@ -107,19 +130,24 @@ class ModalAddTrack extends React.Component {
             <FormGroup>
               <Label for="exampleAddress2">Xác Nhận Mật Khẩu</Label>
               <Input
+                onChange ={this.handleChange.bind(this)} 
                 type="password"
                 name="password2"
                 id="password2"
                 placeholder="Xác nhận lại mật khẩu"
+                invalid ={this.state.validPassword}
               />
+                <FormFeedback invalid>
+                    Kiểm tra lại mật khẩu!!!
+                </FormFeedback>
             </FormGroup>
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="secondary" onClick={this.props.handleCancel}>
+          <Button color="secondary" onClick={this.handleCancel.bind(this)}>
             Cancel
           </Button>
-          <Button color="success" onClick={this.props.handleOk}>
+          <Button color="success" onClick={this.handleOk.bind(this)}>
             OK
           </Button>
         </ModalFooter>

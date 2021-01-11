@@ -2,11 +2,15 @@ import React, { Component } from 'react'
 import ReduxToastr from "react-redux-toastr";
 import Routes from './route/Route'
 import SignUp from "./pages/auth/SignUp"
-import {Provider} from "react-redux"
- 
-const App = ({store}) => {
-    return (
-        <Provider store={store}>
+import {Provider,connect} from "react-redux"
+
+export class App extends Component {
+    componentDidMount(){
+        
+    }
+    render() {
+        return (
+            <Provider store={this.props.store}>
             <Routes />
             <ReduxToastr
                 timeOut={5000}
@@ -18,8 +22,18 @@ const App = ({store}) => {
                 closeOnToastrClick
             />
         </Provider>
-    )
+        )
+    }
 }
-export default App;
+
+const mapStateToProps = (state) => ({
+    
+})
+
+const mapDispatchToProps = {
+    
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 

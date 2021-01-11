@@ -17,7 +17,7 @@ import {
   Spinner
 } from "reactstrap";
 import "../style.css";
-const SignIn = ({dispatchLogin}) => {
+const SignIn = (props) => {
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -49,17 +49,18 @@ const SignIn = ({dispatchLogin}) => {
           password: password,
         },
         (err, result) => {
-            
+          setLoading(false);
           if (err) {
             setError("Lỗi Đăng Nhập ! Vui Lòng Kiểm Tra Lại.");
-            setLoading(false);
+           
           } else {
             if (result.user._id !== undefined) {
-
+            
+              props.dispatchLogin(result)
               // const { dispatch } = this.props;
               // dispatch({ type: 'LOGIN_USER', user: result })
               
-              window.location.replace("/");
+              // window.location.replace("/");
             }
           }
         }
@@ -68,7 +69,7 @@ const SignIn = ({dispatchLogin}) => {
   };
   //   "username": "admin",
   //   "password": "Admin123"
-  
+console.log(props.store)
   return (
     <React.Fragment>
       <Container className="width-percent-80 SignIn-card">
@@ -155,7 +156,7 @@ const SignIn = ({dispatchLogin}) => {
                         size="mb-3"
                         className="btn btn-block text-capitalize"
                       >
-                        Đăng Nhập <time dateTime={error}>{error}</time>
+                        Đăng Nhập 
                       </Button>
                     ) : (
                         <Spinner color="info" type="grow" size= ""/>
@@ -181,13 +182,13 @@ const SignIn = ({dispatchLogin}) => {
     </React.Fragment>
   );
 };
-const dispatchLogin =() =>{
-  return (dispatch,state)=>{
-    dispatch({type :'LOGIN_USER'},state)
+const dispatchLogin =(state) =>{
+  return dispatch =>{
+    dispatch({type :'LOGIN_USER',users:state})
   }
 }
 const mapStateToProps = (store) => ({
-    
+    store : store
 })
 
 const mapDispatchToProps = {

@@ -62,7 +62,7 @@ class NavbarComponent extends React.Component {
   }
 
   render() {
-    console.log(this.props.orther)
+    console.log(this.props)
     const { dispatch, user } = this.props;
     const userInfo = " user.user";
     // const avatar = userInfo.photo;
@@ -156,7 +156,8 @@ class NavbarComponent extends React.Component {
   }
 }
 const mapStateToProps = (store) => ({
-  orther : store.orther
+  orther : store.orther,
+  auth :store.auth
 })
 
 const mapDispatchToProps = {

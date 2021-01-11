@@ -75,7 +75,6 @@ const MapLayout2 = (Layout, routes, isSidebar) =>
     );
     
 export default function Routes(){
-    console.log(authRoutes)
     return(
         <Router>
             <ScrollToTop>
