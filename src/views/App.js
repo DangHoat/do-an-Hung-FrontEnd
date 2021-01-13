@@ -10,7 +10,7 @@ export class App extends Component {
     }
     render() {
         return (
-            <Provider store={this.props.store}>
+            <>
             <Routes />
             <ReduxToastr
                 timeOut={5000}
@@ -21,7 +21,7 @@ export class App extends Component {
                 progressBar
                 closeOnToastrClick
             />
-        </Provider>
+        </>
         )
     }
 }

@@ -4,7 +4,7 @@ const token = "token"
 const ttl = 4000
 
 
-const setUser = (userObj,t)=>{
+const setUser = (userObj,time)=>{
     const now  = new Date()
     let data = {
         user:userObj,

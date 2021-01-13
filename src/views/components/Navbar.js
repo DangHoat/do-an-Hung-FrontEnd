@@ -62,7 +62,7 @@ class NavbarComponent extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.auth)
     const { dispatch, user } = this.props;
     const userInfo = " user.user";
     // const avatar = userInfo.photo;

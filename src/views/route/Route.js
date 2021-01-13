@@ -9,6 +9,7 @@ import AuthLayout from "../pages/layouts/Auth"
 import Dashboard  from "../pages/layouts/Dashboard";
 import Page404 from '../pages/error/Page404'
 import ScrollToTop from "../components/ScrollToTop";
+import{getUser} from "../../../define/SharePreference"
 
 
 const MapLayout1 = (Layout, routes) =>
@@ -79,11 +80,11 @@ export default function Routes(){
         <Router>
             <ScrollToTop>
                 <Switch>
-                    <Route exact path="/" render={() => (<Redirect to="/auth/sign-in" />)} />
+                    <Route exact path="/" render={() => (<Redirect to="/do-an/timeline" />)} />
 
                     {MapLayout1(AuthLayout,authRoutes)}
                     {
-                        true?
+                       getUser() !== null ?
                     MapLayout2(Dashboard,dashboardRoutes,true) : <Redirect to="/auth/sign-in" />
                     }
                     <Route

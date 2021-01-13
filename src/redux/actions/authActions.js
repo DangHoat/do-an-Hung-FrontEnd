@@ -1,8 +1,12 @@
 import * as types from "../configType";
 const axios = require('axios');
-export function loginUser(user) {
+import {setUser,setToken} from '../../../define/SharePreference'
+export function loginUser(state) {
+    setUser(state.user)
+    setToken(state.token)
     return {
-        type: types.LOGIN_USER
+        type: types.LOGIN_USER,
+        users : state.user
     };
 }
 

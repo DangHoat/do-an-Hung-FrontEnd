@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { postAPI } from "../../../APICall/modelAPI";
 import { login } from "../../../APICall/config";
 import { Link, NavLink } from "react-router-dom";
+import { withRouter } from "react-router";
 import socketIOClient from "socket.io-client";
 import {connect} from 'react-redux'
 import {
@@ -17,6 +18,7 @@ import {
   Spinner
 } from "reactstrap";
 import "../style.css";
+
 const SignIn = (props) => {
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
@@ -48,19 +50,18 @@ const SignIn = (props) => {
           username: email,
           password: password,
         },
-        (err, result) => {
+        (err, result) => {  
           setLoading(false);
           if (err) {
+            console.log(err)
             setError("Lỗi Đăng Nhập ! Vui Lòng Kiểm Tra Lại.");
            
           } else {
             if (result.user._id !== undefined) {
-            
               props.dispatchLogin(result)
               // const { dispatch } = this.props;
               // dispatch({ type: 'LOGIN_USER', user: result })
-              
-              // window.location.replace("/");
+              window.location.replace("/do-an/timeline");
             }
           }
         }
@@ -69,7 +70,7 @@ const SignIn = (props) => {
   };
   //   "username": "admin",
   //   "password": "Admin123"
-console.log(props.store)
+console.log(props.auth)
   return (
     <React.Fragment>
       <Container className="width-percent-80 SignIn-card">
@@ -184,14 +185,14 @@ console.log(props.store)
 };
 const dispatchLogin =(state) =>{
   return dispatch =>{
-    dispatch({type :'LOGIN_USER',users:state})
+    dispatch(require('../../../../redux/actions/authActions').loginUser(state))
   }
 }
 const mapStateToProps = (store) => ({
-    store : store
+    auth : store.auth
 })
 
 const mapDispatchToProps = {
   dispatchLogin
 }
-export default connect(mapStateToProps,mapDispatchToProps)(SignIn);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(SignIn)) 
